@@ -5,7 +5,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
     temperature=0.4,
-    google_api_key="AIzaSyC0jgbn0i781wWKJsXF6L15vRIOTlbnLOA"
+    google_api_key="******************"
 )
 
 # Embeddings (same as notebook)
