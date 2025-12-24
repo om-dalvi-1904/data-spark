@@ -1,0 +1,210 @@
+.ds-chat-interface {
+  display: flex;
+  flex-direction: column;
+  height: 600px; /* Fixed height or flex-grow based on layout */
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  margin-top: 20px;
+}
+
+.ds-chat-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Welcome State */
+.ds-welcome-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text);
+  padding: 20px;
+}
+
+.ds-welcome-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.ds-welcome-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ds-welcome-text {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 400px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.ds-session-id {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+/* Messages List */
+.ds-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ds-message {
+  display: flex;
+  max-width: 80%;
+}
+
+.ds-message-user {
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.ds-message-bot {
+  align-self: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.ds-message-bubble {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  position: relative;
+}
+
+.ds-message-user .ds-message-bubble {
+  background: linear-gradient(135deg, var(--accent), #6d28d9);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.ds-message-bot .ds-message-bubble {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+}
+
+/* Typing Indicator */
+.ds-typing-bubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 16px; /* Slightly taller for dots */
+}
+
+.ds-typing-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--muted);
+  border-radius: 50%;
+  animation: typing 1.4s infinite ease-in-out both;
+}
+
+.ds-typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.ds-typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  }
+  40% { 
+    transform: scale(1);
+  }
+}
+
+/* Input Area */
+.ds-input-area {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.ds-input-form {
+  display: flex;
+  gap: 12px;
+  position: relative;
+}
+
+.ds-chat-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.ds-chat-input:focus {
+  border-color: var(--accent);
+}
+
+.ds-chat-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ds-send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ds-send-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  background: var(--border);
+}
+
+.ds-send-btn:not(:disabled):hover {
+  opacity: 0.9;
+}
